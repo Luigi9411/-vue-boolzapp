@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #009688;
+    height: 150px;
+}
+
+main{
+    background-color: #DBDBD4;
+    height: 571px;
+}
+
+.container-app{
+    width: 1200px;
+    height: 680px;
+    position: absolute;
+    inset: 1.4em 4em;
+    background-color: aqua;
+}
+
+.title{
+    height: 4.5em;
+    background-color: #EAEAEA;
+    border-right: .1em solid #D6D6D6;
+}
+
+.avatar{
+    border-radius: 100%;
+    width: 12%;
+}
+
+.fa-solid{
+    color: #B1B1B1;
+}
+
+.notifications{
+    height: 4.8em;
+    background-color: #8EDAFC;
+}
+
+.bi-bell-slash-fill{
+    border-radius: 100%;
+    background-color: white;
+    color: #8EDAFC;
+    padding: .2em .5em;
+    transform: rotateZ(180deg) rotateX(180deg);
+}
+
+.font{
+    font-size: .7em;
+   line-height: .3em;
+}
+
+.form-search{
+    height: 2.5em;
+    background-color: white;
+}
+
+.search{
+    padding: 1px 20px;
+    border: 1px solid #EAEAEA;
+    min-width: 400px;
+}
+
+.search-icon{
+    min-width: 70px;
+    min-height: 28px;
+    background-color: white;
+    border: 1px solid #EAEAEA;
+}
