@@ -17,7 +17,6 @@ body{
 .container-app{
     width: 1200px;
     height: 94vh;
-    background-color: aqua;
 }
 
 .title{
@@ -28,7 +27,7 @@ body{
 
 .avatar{
     border-radius: 100%;
-    width: 12%;
+    width: 13%;
 }
 
 .fa-solid{
@@ -113,3 +112,127 @@ body{
     background-color: #EAEAEA;
     margin-left: -1.5em;
 }
+
+.back-text{
+    height: 543px;
+    background-image: url(../img/mine.jpg);
+    background-size: cover;
+    margin-left: -1.5em;
+    overflow-y: scroll;
+}
+
+.margin-two{
+    margin-left: -1.5em;
+    padding-right: 1.5em;
+}
+
+.search-right{
+    height: 4em;
+    margin-left: -1.5em;
+    background-color: #EAEAEA;
+    z-index: 98;
+}
+
+.search-two{
+    padding: 9px 20px;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+    min-width: 550px;
+}
+
+.avatar3{
+    border-radius: 100%;
+    width: 11%;
+}
+
+.icon-color{
+    color: #6B7598;
+}
+
+.area-text{
+    max-width: 200px;
+    min-height: 45px;
+    background-color: white;
+    position: relative;
+    border-radius: 10px;
+    padding-right: 1em;
+    margin-left: 3em;
+}
+
+.area-text2{
+    max-width: 200px;
+    min-height: 45px;
+    background-color: #D5F9BA;
+    position: relative;
+    border-radius: 10px;
+    padding-right: 1em;
+    margin-left: 29em;
+}
+
+.texts{
+    position: relative;
+}
+
+.area-text2 .fa-angle-down,
+.area-text .fa-angle-down{
+    display: none;
+}
+
+.area-text2:hover .fa-angle-down,
+.area-text:hover .fa-angle-down{
+    position: absolute;
+    display: block;
+    top: 0.5;
+    right: 0;
+    margin-right: .5em;
+    margin-top: .5em;
+    cursor: pointer;
+}
+
+.area-text2 .arrow-menu,
+.area-text .arrow-menu{
+    position: absolute;
+    right: 0;
+    top: 45px;
+    list-style: none;
+    background-color: white;
+    font-size: .8em;
+    width: 120px;
+    padding: .4em;
+    box-shadow: 0 0 2px #888888;
+    text-align: center;
+    display: none;
+    cursor: pointer;
+}
+
+.area-text2:hover .arrow-menu,
+.area-text:hover .arrow-menu{
+    display: block;
+}
+
+.button-text{
+    position: absolute;
+    top: 0;
+    right: 0;  
+}
+
+.time-text{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: .6em;
+    color: #B6B9BB;
+}
+
+.button-text:hover{
+    display: block;
+}
+
+.display-index{
+    display: none;
+}
+
+.display-index.active{
+    display: block;
+}
+

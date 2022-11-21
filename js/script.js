@@ -1,6 +1,11 @@
 new Vue({
 	el: '#app',
 	data: {
+		activeIndex : 0,
+		message:'',
+		message2:'ok',
+		timeSlider : 1*1000,
+		searchUtents:'',
 		contacts: [
 			{
 				name: 'Michele',
@@ -163,7 +168,27 @@ new Vue({
 					},
 				],
 			},
-		],
+		],			
 	},
-	methods: {},
+	methods: {
+		setActiveIndex(index){
+			this.activeIndex= index;
+		},
+		addMessages(){
+			this.contacts[this.activeIndex].messages.push({
+                message: this.message,
+				status: 'received',
+			});
+			setTimeout(() =>{
+				this.contacts[this.activeIndex].messages.push({
+					message: this.message2,
+					status: 'sent',
+				});
+			},this.timeSlider);
+			this.message='';
+		},
+		deleteText(index) {
+			this.contacts[this.activeIndex].messages.splice(index,1);
+		},
+		},
 });

@@ -48,10 +48,10 @@
                     </div>
                     <div class="form-search d-flex justify-content-center align-items-center">
                         <button class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <input type="text" name="search" placeholder="Cerca o inizia una nuova chat" class="search " >
+                        <input type="text" name="search"  placeholder="Cerca o inizia una nuova chat" class="search " >
                     </div>
                     <div class="user-container">
-                        <div v-for="(obj,i) in contacts" :key="obj.date" class="chat-avatar d-flex">
+                        <div v-for="(obj,i) in contacts" :key="obj.date" class="chat-avatar d-flex" @click="setActiveIndex(i)">
                             <img class="avatar-two mx-2 align-self-center" :src="'img/avatar'+ obj.avatar +'.jpg'" alt="error">
                             <div class="font-two align-self-center">
                                 <h5 class="user-name">{{obj.name}}</h5>
@@ -62,16 +62,47 @@
                     </div>
                 </div>
                 <div class="col-7">
-                    <div class="title-two d-flex justify-content-around align-items-center">
-                        <div>
-                           <img class="avatar mx-2" src="img/avatar_io.jpg" alt="error">
-                           <span class="fs-5">Sofia</span>
+                    <div class="title-two d-flex justify-content-between align-items-center">
+                        <div v-for="(obj,i) in contacts" :key="obj.date" class="display-index" :class="{active: i === activeIndex}">
+                           <img class="avatar3 mx-2" :src="'img/avatar'+ obj.avatar +'.jpg'" alt="error">
+                           <span class="fs-5">{{obj.name}}</span>
                        </div>
-                       <div class="my-auto  fs-3 flex-nowrap d-flex ">
-                            <i class="fa-solid fa-circle-notch pe-3"></i>
-                            <i class="fa-solid fa-message pe-3"></i>
+                       <div class="my-auto  fs-3 flex-nowrap d-flex gap-3">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
                             <i class="fa-solid fa-ellipsis-vertical pe-3"></i>
                         </div>
+                   </div>
+                   <div class="back-text pt-4">
+                        <div v-for="objMessages in contacts[activeIndex].messages" :key="objMessages.date">
+                            <div v-if="objMessages.status == 'sent'" class="area-text mt-4 ">
+                                <p class="ps-3 pt-2 pb-2 ">{{objMessages.message}}</p>
+                                <div class="time-text pe-2 pb-1">12:00</div>
+                                <div class="button-text">
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <ul class="arrow-menu">
+                                        <li>info messaggio</li>
+                                        <li @click="deleteText(i)">cancella messaggio</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div v-else-if="objMessages.status == 'received'" class="area-text2 mt-4" >
+                                <p class="ps-3 pt-2 pb-2 texts">{{objMessages.message}}</p>
+                                <div class="time-text pe-2 pb-1">12:00</div>
+                                <div class="button-text">
+                                    <i class="fa-solid fa-angle-down "> </i>
+                                    <ul class="arrow-menu">
+                                        <li>info messaggio </li>
+                                        <li @click="deleteText(i)">cancella messaggio</li>
+                                    </ul>  
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                   <div class="search-right d-flex justify-content-around align-items-center">
+                      <i class="bi bi-emoji-smile fs-4 ms-3 icon-color"></i>
+                      <input type="text" name="search" placeholder="Scrivi un messaggio" class="search-two" v-model="message" @keyup.enter="addMessages" >
+                      <i class="fa-solid fa-microphone fs-4 me-3 icon-color"></i>
                    </div>
                 </div>
 
