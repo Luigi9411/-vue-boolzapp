@@ -48,10 +48,10 @@
                     </div>
                     <div class="form-search d-flex justify-content-center align-items-center">
                         <button class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <input type="text" name="search"  placeholder="Cerca o inizia una nuova chat" class="search " >
+                        <input type="text" name="search"  placeholder="Cerca o inizia una nuova chat" class="search" v-model="searchUtents"  @keyup="search" >
                     </div>
                     <div class="user-container">
-                        <div v-for="(obj,i) in contacts" :key="obj.date" class="chat-avatar d-flex" @click="setActiveIndex(i)">
+                        <div v-for="(obj,i) in contacts" :key="obj.date" class="chat-avatar d-flex" @click="setActiveIndex(i)" :class="{'d-none':!obj.visible}">
                             <img class="avatar-two mx-2 align-self-center" :src="'img/avatar'+ obj.avatar +'.jpg'" alt="error">
                             <div class="font-two align-self-center">
                                 <h5 class="user-name">{{obj.name}}</h5>
@@ -74,7 +74,7 @@
                         </div>
                    </div>
                    <div class="back-text pt-4">
-                        <div v-for="objMessages in contacts[activeIndex].messages" :key="objMessages.date">
+                        <div v-for="(objMessages,i) in contacts[activeIndex].messages" :key="objMessages.date">
                             <div v-if="objMessages.status == 'sent'" class="area-text mt-4 ">
                                 <p class="ps-3 pt-2 pb-2 ">{{objMessages.message}}</p>
                                 <div class="time-text pe-2 pb-1">12:00</div>

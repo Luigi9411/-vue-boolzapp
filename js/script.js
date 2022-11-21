@@ -179,8 +179,9 @@ new Vue({
                 message: this.message,
 				status: 'received',
 			});
+			const receivingIndex = this.activeIndex;
 			setTimeout(() =>{
-				this.contacts[this.activeIndex].messages.push({
+				this.contacts[receivingIndex].messages.push({
 					message: this.message2,
 					status: 'sent',
 				});
@@ -189,6 +190,15 @@ new Vue({
 		},
 		deleteText(index) {
 			this.contacts[this.activeIndex].messages.splice(index,1);
+		},
+		search() {
+			for (let i=0; i < this.contacts.lenght; i++){
+				if (this.contacts[i].name.toLowerCase().trim().includes(this.searchUtents.toLowerCase().trim())){
+					this.contacts[i].visible = true;
+				}else{
+					this.contacts[i].visible = false;
+				}
+			}
 		},
 		},
 });
