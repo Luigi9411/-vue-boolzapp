@@ -7,6 +7,8 @@
     <title>Vue Boolzapp</title>
     <!-- style-css -->
 	<link rel="stylesheet" href="css/style.css">
+    <!-- luxom -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js" defer></script>
     <!-- vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js" defer></script>
 	<script src="js/script.js" defer></script>
@@ -48,16 +50,16 @@
                     </div>
                     <div class="form-search d-flex justify-content-center align-items-center">
                         <button class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <input type="text" name="search"  placeholder="Cerca o inizia una nuova chat" class="search" v-model="searchUtents"  @keyup="search" >
+                        <input type="text" name="search"  placeholder="Cerca o inizia una nuova chat" class="search" v-model="searchUtents" @keyup="search">
                     </div>
                     <div class="user-container">
                         <div v-for="(obj,i) in contacts" :key="obj.date" class="chat-avatar d-flex" @click="setActiveIndex(i)" :class="{'d-none':!obj.visible}">
                             <img class="avatar-two mx-2 align-self-center" :src="'img/avatar'+ obj.avatar +'.jpg'" alt="error">
                             <div class="font-two align-self-center">
                                 <h5 class="user-name">{{obj.name}}</h5>
-                                <p class="spy-user">Ultimo messaggio inviato</p>
+                                <p class="spy-user">{{obj.messages[obj.messages.length - 1].message}}</p>
                             </div>
-                            <div class="time-chat me-2 mt-2">12:00</div>
+                            <div class="time-chat me-2 mt-2">{{obj.messages[obj.messages.length - 1].date}}</div>
                         </div>
                     </div>
                 </div>
@@ -76,8 +78,8 @@
                    <div class="back-text pt-4">
                         <div v-for="(objMessages,i) in contacts[activeIndex].messages" :key="objMessages.date">
                             <div v-if="objMessages.status == 'sent'" class="area-text mt-4 ">
-                                <p class="ps-3 pt-2 pb-2 ">{{objMessages.message}}</p>
-                                <div class="time-text pe-2 pb-1">12:00</div>
+                                <p class="ps-3 pt-2 pb-2 texts">{{objMessages.message}}</p>
+                                <div class="time-text pe-2 pb-1">{{objMessages.date}}</div>
                                 <div class="button-text">
                                     <i class="fa-solid fa-angle-down"></i>
                                     <ul class="arrow-menu">
@@ -88,7 +90,7 @@
                             </div>
                             <div v-else-if="objMessages.status == 'received'" class="area-text2 mt-4" >
                                 <p class="ps-3 pt-2 pb-2 texts">{{objMessages.message}}</p>
-                                <div class="time-text pe-2 pb-1">12:00</div>
+                                <div class="time-text pe-2 pb-1">{{objMessages.date}}</div>
                                 <div class="button-text">
                                     <i class="fa-solid fa-angle-down "> </i>
                                     <ul class="arrow-menu">

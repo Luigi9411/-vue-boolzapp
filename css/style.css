@@ -170,7 +170,7 @@ body{
 }
 
 .texts{
-    position: relative;
+   z-index: 96;
 }
 
 .area-text2 .fa-angle-down,
@@ -208,6 +208,7 @@ body{
 .area-text2:hover .arrow-menu,
 .area-text:hover .arrow-menu{
     display: block;
+    z-index: 99;
 }
 
 .button-text{

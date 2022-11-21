@@ -176,12 +176,14 @@ new Vue({
 		},
 		addMessages(){
 			this.contacts[this.activeIndex].messages.push({
+				date: this.getNow(),
                 message: this.message,
 				status: 'received',
 			});
 			const receivingIndex = this.activeIndex;
 			setTimeout(() =>{
 				this.contacts[receivingIndex].messages.push({
+					date: this.getNow(),
 					message: this.message2,
 					status: 'sent',
 				});
@@ -192,13 +194,16 @@ new Vue({
 			this.contacts[this.activeIndex].messages.splice(index,1);
 		},
 		search() {
-			for (let i=0; i < this.contacts.lenght; i++){
+			for (let i = 0; i < this.contacts.length; i++){
 				if (this.contacts[i].name.toLowerCase().trim().includes(this.searchUtents.toLowerCase().trim())){
 					this.contacts[i].visible = true;
 				}else{
 					this.contacts[i].visible = false;
 				}
 			}
+		},
+		getNow(){
+           return luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss');
 		},
 		},
 });
